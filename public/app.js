@@ -1,7 +1,12 @@
-var modal = document.getElementById('id01');
+const LOGIN_BUTTON = ".js-login-button";
+const LOGIN_MODAL = "#modal-1";
+const CLOSE_MODAL = ".js-close";
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+$(function(){
+	$(LOGIN_BUTTON).click(function(){
+		$(LOGIN_MODAL).css("display","block");
+	})
+	$(CLOSE_MODAL).click(function(){
+		$(LOGIN_MODAL).css("display","none");
+	})
+})
