@@ -1,0 +1,74 @@
+<html><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 4 ScrollSpy Nav</title>
+  <base target="_self">
+  <meta name="description" content="Example of a Bootstrap 4 navbar with ScrollSpy to highlight the active nav item as the page is scrolled.">
+  <meta name="google" value="notranslate">
+  <link rel="shortcut icon" href="/images/cp_ico.png">
+
+
+  <!--stylesheets / link tags loaded here-->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/main.css">
+
+</head>
+<body data-spy="scroll" data-target="#navbarCodeply" data-offset="70">
+
+  <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">StudentPage</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCodeply">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCodeply">
+        <ul class="nav navbar-nav justify-content-end ">
+          <a class="nav-link" href="#sec1">All Students</a>
+          <a class="nav-link" href="#sec2">Create Student</a>
+          <a class="nav-link" href="#sec3">Logout</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-3">
+        <img class="student-img" src="/images/guitarGuy.jpg" alt="">
+      </div>
+      <div class="col-sm-9">
+        <h3 id="sec1">Name: Johnny</h3>
+        <p><span class="bio-title">Instrument:</span>Piano</p>
+        <p><span class="bio-title">Level:</span>Intermediate</p>
+        <p><span class="bio-title">Bio:</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      </div>
+    </div>
+    <div class="row student-content">
+      <div class="col-sm-12">
+        <h4>Logs</h4>
+        <p class="logData"><span class="bio-title">Date:</span> 10/2/2017</p>
+        <p class="logTime"><span class="bio-title">Time:</span> 11:00AM-11:30AM</p>
+        <p class="logNotes"><span class="bio-title">Notes:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+        <p class="logGoals"><span class="bio-title">Goals:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!--scripts loaded here-->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+
+
+  <script>
+
+  </script>
+
+
+
+</body>
+</html>

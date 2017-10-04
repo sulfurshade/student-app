@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const studentSchema = mongoose.Schema({
+const blogPostSchema = mongoose.Schema({
   name: {
     firstName: String,
     lastName: String
