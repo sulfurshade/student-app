@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 
 const {DATABASE_URL, PORT} = require('./config');
-const {BlogPost} = require('./models');
+const {Student} = require('./models');
 
 const app = express();
 
@@ -15,11 +15,11 @@ app.use(express.static('public'));
 mongoose.Promise = global.Promise;
 
 
-app.get('/posts', (req, res) => {
-  BlogPost
+app.get('/students', (req, res) => {
+  Student
     .find()
-    .then(posts => {
-      res.json(posts.map(post => post.apiRepr()));
+    .then(students => {
+      res.json(students.map(student => student.apiRepr()));
     })
     .catch(err => {
       console.error(err);
@@ -27,18 +27,18 @@ app.get('/posts', (req, res) => {
     });
 });
 
-app.get('/posts/:id', (req, res) => {
-  BlogPost
+app.get('/students/:id', (req, res) => {
+  Student
     .findById(req.params.id)
-    .then(post => res.json(post.apiRepr()))
+    .then(student => res.json(student.apiRepr()))
     .catch(err => {
       console.error(err);
       res.status(500).json({error: 'something went horribly awry'});
     });
 });
 
-app.post('/posts', (req, res) => {
-  const requiredFields = ['title', 'content', 'author'];
+app.post('/students', (req, res) => {
+  const requiredFields = ['name', 'instrument', 'level', 'username'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -48,13 +48,14 @@ app.post('/posts', (req, res) => {
     }
   }
 
-  BlogPost
+  Student
     .create({
-      title: req.body.title,
-      content: req.body.content,
-      author: req.body.author
+      name: req.body.name,
+      instrument: req.body.instrument,
+      level: req.body.level,
+      username: req.body.username
     })
-    .then(blogPost => res.status(201).json(blogPost.apiRepr()))
+    .then(student => res.status(201).json(student.apiRepr()))
     .catch(err => {
         console.error(err);
         res.status(500).json({error: 'Something went wrong'});
@@ -64,7 +65,7 @@ app.post('/posts', (req, res) => {
 
 
 app.delete('/posts/:id', (req, res) => {
-  BlogPost
+  Student
     .findByIdAndRemove(req.params.id)
     .then(() => {
       res.status(204).json({message: 'success'});
@@ -91,7 +92,7 @@ app.put('/posts/:id', (req, res) => {
     }
   });
 
-  BlogPost
+  Student
     .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
     .then(updatedPost => res.status(204).end())
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
@@ -99,7 +100,7 @@ app.put('/posts/:id', (req, res) => {
 
 
 app.delete('/:id', (req, res) => {
-  BlogPosts
+  Student
     .findByIdAndRemove(req.params.id)
     .then(() => {
       console.log(`Deleted blog post with id \`${req.params.ID}\``);

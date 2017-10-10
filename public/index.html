@@ -1,94 +1,76 @@
 <html><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap 4 ScrollSpy Nav</title>
+  <title>StudentTracker</title>
   <base target="_self">
   <meta name="description" content="Example of a Bootstrap 4 navbar with ScrollSpy to highlight the active nav item as the page is scrolled.">
   <meta name="google" value="notranslate">
   <link rel="shortcut icon" href="/images/cp_ico.png">
 
-  
   <!--stylesheets / link tags loaded here-->
-
-
-
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-  
-
-  
-
-  <style type="text/css">body {
-    position: relative;
-    overflow-y: auto;
-    padding-top: 70px; /* padding for fixed navbar */
-}</style>
+  <link rel="stylesheet" href="/main.css">
 
 </head>
-<body data-spy="scroll" data-target="#navbarCodeply" data-offset="70">
-  
-  <div style="position:fixed;right:8px;top:8px;z-index:2000;border-radius:20px;padding:1px 4px;font-size:11px;background:rgba(255,255,255,0.8);font-family:monospace"><a target="edit" title="Edit code on Codeply" style="color:#192f42;" href="/go/7CDRomtM0D">Edit on Codeply</a></div>
-  <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+<nav class="navbar navbar-expand-md fixed-top navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="#">Codeply</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCodeply">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCodeply">
-            <ul class="nav navbar-nav">
-                <a class="nav-link" href="#sec1">One</a>
-                <a class="nav-link" href="#sec2">Two</a>
-                <a class="nav-link" href="#sec3">Three</a>
-            </ul>
-        </div>
+      <a class="navbar-brand" href="/index.html">StudentTracker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCodeply">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCodeply">
+        <ul class="nav navbar-nav justify-content-end ">
+          <a class="nav-link" href="/all-students.html">All Students</a>
+          <a class="nav-link" href="/create-student.html">Create Student</a>
+          <a class="nav-link" href="#sec3">Logout</a>
+        </ul>
+      </div>
     </div>
-</nav>
-<div class="container">
-    <h6 class="mb-5">Bootstrap 4 Scrollspy Example</h6>
-    <div class="row">
-        <div class="col-12 col-sm-8">
-            <h3 id="sec1">One</h3>
-            <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics,
-                raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation.
-                Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
+  </nav><br>
 
-            <p>Ethical Kickstarter PBR asymmetrical lo-fi. Dreamcatcher street art Carles, stumptown gluten-free Kickstarter artisan Wes Anderson wolf pug. Godard sustainable you probably haven't heard of them, vegan farm-to-table Williamsburg slow-carb
-                readymade disrupt deep v. Meggings seitan Wes Anderson semiotics, cliche American Apparel whatever. Helvetica cray plaid, vegan brunch Banksy leggings +1 direct trade. Wayfarers codeply PBR selfies. Banh mi McSweeney's Shoreditch selfies,
-                forage fingerstache food truck occupy YOLO Pitchfork fixie iPhone fanny pack art party Portland.</p>
-            <hr>
-            <h3 id="sec2">Two</h3>
-            <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics,
-                raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation.
-                Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
-
-            <p>Ethical Kickstarter PBR asymmetrical lo-fi. Dreamcatcher street art Carles, stumptown gluten-free Kickstarter artisan Wes Anderson wolf pug. Godard sustainable you probably haven't heard of them, vegan farm-to-table Williamsburg slow-carb
-                readymade disrupt deep v. Meggings seitan Wes Anderson semiotics, cliche American Apparel whatever. Helvetica cray plaid, vegan brunch Banksy leggings +1 direct trade. Wayfarers codeply PBR selfies. Banh mi McSweeney's Shoreditch selfies,
-                forage fingerstache food truck occupy YOLO Pitchfork fixie iPhone fanny pack art party Portland.</p>
-            <h3 id="sec3">Three</h3>
-            <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics,
-                raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation.
-                Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
-
-            <p>Ethical Kickstarter PBR asymmetrical lo-fi. Dreamcatcher street art Carles, stumptown gluten-free Kickstarter artisan Wes Anderson wolf pug. Godard sustainable you probably haven't heard of them, vegan farm-to-table Williamsburg slow-carb
-                readymade disrupt deep v. Meggings seitan Wes Anderson semiotics, cliche American Apparel whatever. Helvetica cray plaid, vegan brunch Banksy leggings +1 direct trade. Wayfarers codeply PBR selfies. Banh mi McSweeney's Shoreditch selfies,
-                forage fingerstache food truck occupy YOLO Pitchfork fixie iPhone fanny pack art party Portland.</p>
-        </div>
+  <div class="page-wrap container">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">
+        Welcome to my StudentTracker project!
+      </h1>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-center">
+        The <strong>StudentTracker</strong> is a website that lets you log in as a teacher to keep track of your music students. Students are listed by instrument and skill level, plus it includes a short bio. Notes can be entered for past lessons as well as goals for future sessions. This project was built using <em>bootstrap</em>, <em>mongo</em>, and <em>node</em>. Click on the <strong>button</strong> below to get started. If you are a demo user, use the username "demo_user" and the password "demo-pwd".
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+       
+      <button type="button" class="btn btn-primary btn-lg btn-block">
+        Let's Get Started
+      </button>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
 </div>
-  
-  
+  </div>
+
+<!-- Footer -->
+    <footer class="site-footer py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Joey Wolter 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    
   <!--scripts loaded here-->
-  
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-  
-  
-  
-  <script>
-  
-  </script>
-
-
 
 </body>
-      </html>
+</html>

@@ -1,3 +1,35 @@
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+  background-color: white;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 142px; 
+}
+.site-footer {
+  background: orange;
+}
+.navbar {
+  background-color: lightblue;
+}
+h1 {
+  padding: 20px;
+}
+.radio-inline {
+  padding-right: 10px;
+}
+
 body {
     position: relative;
     overflow-y: auto;

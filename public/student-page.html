@@ -1,7 +1,7 @@
 <html><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap 4 ScrollSpy Nav</title>
+  <title>StudentPage - StudentTracker</title>
   <base target="_self">
   <meta name="description" content="Example of a Bootstrap 4 navbar with ScrollSpy to highlight the active nav item as the page is scrolled.">
   <meta name="google" value="notranslate">
@@ -14,23 +14,23 @@
 </head>
 <body data-spy="scroll" data-target="#navbarCodeply" data-offset="70">
 
-  <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+  <nav class="navbar navbar-expand-md fixed-top navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="#">StudentPage</a>
+      <a class="navbar-brand" href="/index.html">StudentTracker</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCodeply">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCodeply">
         <ul class="nav navbar-nav justify-content-end ">
-          <a class="nav-link" href="#sec1">All Students</a>
-          <a class="nav-link" href="#sec2">Create Student</a>
+          <a class="nav-link" href="/all-students.html">All Students</a>
+          <a class="nav-link" href="/create-student.html">Create Student</a>
           <a class="nav-link" href="#sec3">Logout</a>
         </ul>
       </div>
     </div>
-  </nav>
+  </nav><br>
 
-  <div class="container">
+  <div class="page-wrap container">
 
     <div class="row">
       <div class="col-sm-3">
@@ -38,9 +38,9 @@
       </div>
       <div class="col-sm-9">
         <h3 id="sec1">Name: Johnny</h3>
-        <p><span class="bio-title">Instrument:</span>Piano</p>
-        <p><span class="bio-title">Level:</span>Intermediate</p>
-        <p><span class="bio-title">Bio:</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <p><span class="bio-title">Instrument: </span>Piano</p>
+        <p><span class="bio-title">Level: </span>Intermediate</p>
+        <p><span class="bio-title">Bio: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
       </div>
     </div>
     <div class="row student-content">
@@ -54,6 +54,14 @@
     </div>
   </div>
 
+<!-- Footer -->
+    <footer class="site-footer py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Joey Wolter 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    
   <!--scripts loaded here-->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>

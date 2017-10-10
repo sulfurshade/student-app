@@ -1,30 +1,31 @@
 const mongoose = require('mongoose');
 
-const blogPostSchema = mongoose.Schema({
+const studentSchema = mongoose.Schema({
   name: {
     firstName: String,
     lastName: String
   },
   instrument: {type: String, required: true},
-  username: {type: String, unique: true},
+  level: {type: String, required: true},
+  username: {type: String, required: true, unique: true},
   logs: [{notes:String, goals:String, date:Date, dueDate:Date}]
 });
 
 
-// blogPostSchema.virtual('authorName').get(function() {
-//   return `${this.author.firstName} ${this.author.lastName}`.trim();
-// });
+studentSchema.virtual('studentName').get(function() {
+  return `${this.name.firstName} ${this.name.lastName}`.trim();
+});
 
-// blogPostSchema.methods.apiRepr = function() {
-//   return {
-//     id: this._id,
-//     author: this.authorName,
-//     content: this.content,
-//     title: this.title,
-//     created: this.created
-//   };
-// }
+studentSchema.methods.apiRepr = function() {
+  return {
+    id: this._id,
+    name: this.studentName,
+    instrument: this.instrument,
+    level: this.level,
+    username: this.username
+  };
+}
 
-const BlogPost = mongoose.model('BlogPost', blogPostSchema);
+const Student = mongoose.model('Student', studentSchema);
 
-module.exports = {BlogPost};
+module.exports = {Student};
