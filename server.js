@@ -27,9 +27,10 @@ app.get('/students', (req, res) => {
     });
 });
 
-app.get('/students/:id', (req, res) => {
+app.get('/students/:username', (req, res) => {
+  console.log("hi");
   Student
-    .findById(req.params.id)
+    .find({username: req.params.username})
     .then(student => res.json(student.apiRepr()))
     .catch(err => {
       console.error(err);

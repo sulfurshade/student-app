@@ -3,8 +3,9 @@ const STUDENT_FIRST = "#first-name";
 const STUDENT_LAST = "#last-name";
 const STUDENT_USERNAME = "#student-username";
 const STUDENT_INSTRUMENT = "#student-instrument";
-const STUDENT_LEVEL = "";
-const STUDENT_BIO = "";
+const STUDENT_LEVEL = "#student-level";
+const STUDENT_BIO = "#student-bio";
+const STUDENT_IMAGE = "#student-image";
 
 $(function(){
 	$(CREATE_BUTTON).click(function(e){
@@ -16,7 +17,9 @@ $(function(){
 			},
 			instrument: $(STUDENT_INSTRUMENT).val(),
 			level: $(STUDENT_LEVEL).val(),
-			username: $(STUDENT_USERNAME).val()
+			username: $(STUDENT_USERNAME).val(),
+			bio: $(STUDENT_BIO).val(),
+			image: $(STUDENT_IMAGE).val()
 		}
 		console.log(newStudent);
 		$.ajax({

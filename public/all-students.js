@@ -27,6 +27,7 @@ $(function(){
 			var clonedStudent = $(TEST_STUDENT).clone();
 			clonedStudent.find(STUDENT_IMAGE).attr('src', student.image);
 			clonedStudent.find(STUDENT_NAME).text(student.name);
+			clonedStudent.find(STUDENT_NAME).attr('href', "/student-page.html#" + (student.username));
 			clonedStudent.find(STUDENT_INFO).text(student.bio);
 			clonedStudent.removeClass("hidden");
 			$(STUDENT_LIST).append(clonedStudent);
