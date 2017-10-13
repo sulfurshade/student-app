@@ -29,6 +29,9 @@ h1 {
 .radio-inline {
   padding-right: 10px;
 }
+.hidden {
+  display: none;
+}
 
 body {
     position: relative;

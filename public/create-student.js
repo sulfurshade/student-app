@@ -20,19 +20,19 @@ $(function(){
 		}
 		console.log(newStudent);
 		$.ajax({
-		url: `/students`,
-		type: "POST",
-		data: JSON.stringify(newStudent),
-		contentType: "application/json; charset=utf-8",
-		dataType: "json",
-		success: function(data){
-			console.log("yay! data");
-			console.log(data);
-		},
-		error: function(errorData){
-			console.log("err");
-			console.log(errorData);
-		},
-	});
+			url: `/students`,
+			type: "POST",
+			data: JSON.stringify(newStudent),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data){
+				console.log("yay! data");
+				console.log(data);
+			},
+			error: function(errorData){
+				console.log("err");
+				console.log(errorData);
+			},
+		});
 	})
 })

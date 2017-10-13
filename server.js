@@ -38,7 +38,7 @@ app.get('/students/:id', (req, res) => {
 });
 
 app.post('/students', (req, res) => {
-  const requiredFields = ['name', 'instrument', 'level', 'username'];
+  const requiredFields = ['name', 'bio', 'image', 'instrument', 'level', 'username'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -51,8 +51,10 @@ app.post('/students', (req, res) => {
   Student
     .create({
       name: req.body.name,
+      image: req.body.image,
       instrument: req.body.instrument,
       level: req.body.level,
+      bio: req.body.bio,
       username: req.body.username
     })
     .then(student => res.status(201).json(student.apiRepr()))
