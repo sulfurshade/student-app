@@ -10,7 +10,7 @@ const jsonParser = bodyParser.json();
 
 
 
-router.get('/', (req, res) => {
+router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   Student
     .find()
     .then(students => {
@@ -97,4 +97,3 @@ router.put('/:id', (req, res) => {
 
 
 module.exports = {studentsRouter:router};
-
