@@ -1,40 +1,41 @@
-const PAGE = ".page-wrap";
-const STUDENT_INFO = "#student-info";
+const STUDENT_BOX = ".student-box";
 const STUDENT_NAME = "#sp-name";
 const STUDENT_INSTRUMENT = "#sp-instrument";
 const STUDENT_LEVEL = "#sp-level";
 const STUDENT_BIO = "#sp-bio";
 const STUDENT_LOGS = "#sp-logs";
+const STUDENT_IMAGE = ".student-img";
 const LOG_DATE = "#log-date";
 const LOG_TIME = "#log-time";
 const LOG_NOTES = "#log-notes";
 const LOG_GOALS = "#log-goals";
 
 $(function(){
+	var username = window.location.hash.substr(1);
+	console.log(username);
 	$.ajax({
-		url: `/students`,
+		url: `/students/${username}`,
 		type: "GET",
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data){
 			console.log("yay! data");
 			console.log(data);
-			renderStudents(data);
+			renderStudent(data);
 		},
 		error: function(errorData){
 			console.log("err");
 			console.log(errorData);
 		},
 	});
-	function renderStudent(studentsArray){
-		var student = $(STUDENT_INFO).clone();
-		student.find(STUDENT_NAME).text("hi");
-		// $(STUDENT_INSTRUMENT).text("");
-		// $(STUDENT_LEVEL).text("");
-		// $(STUDENT_BIO)text("");
+	function renderStudent(studentInfo){
+		var student = $(STUDENT_BOX);
+		student.find(STUDENT_NAME).text(studentInfo.name);
+		student.find(STUDENT_INSTRUMENT).text(studentInfo.instrument);
+		student.find(STUDENT_LEVEL).text(studentInfo.level);
+		student.find(STUDENT_BIO).text(studentInfo.bio);
+		student.find(STUDENT_IMAGE).attr("src", studentInfo.image);
 		// $(STUDENT_LOGS);
-		student.removeClass("hidden");
-		$(STUDENT_INFO).append(student);
 	// 	for (let student of studentsArray){
 	// 		console.log(student.image);
 	// 		var clonedStudent = $(TEST_STUDENT).clone();
@@ -44,5 +45,5 @@ $(function(){
 	// 		clonedStudent.removeClass("hidden");
 	// 		$(STUDENT_LIST).append(clonedStudent);
 	// 	}
-	// }
-})
+	}
+});

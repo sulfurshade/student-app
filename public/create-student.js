@@ -10,13 +10,14 @@ const STUDENT_IMAGE = "#student-image";
 $(function(){
 	$(CREATE_BUTTON).click(function(e){
 		e.preventDefault();
+		var levelRadio = $('input[name=student-level]');
 		let newStudent = {
 			name: {
 				firstName: $(STUDENT_FIRST).val(),
 				lastName: $(STUDENT_LAST).val()
 			},
 			instrument: $(STUDENT_INSTRUMENT).val(),
-			level: $(STUDENT_LEVEL).val(),
+			level: levelRadio.filter(':checked').val(),
 			username: $(STUDENT_USERNAME).val(),
 			bio: $(STUDENT_BIO).val(),
 			image: $(STUDENT_IMAGE).val()

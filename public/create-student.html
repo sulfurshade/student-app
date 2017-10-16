@@ -66,12 +66,12 @@ Username</label>
   <label class="col-md-4 control-label" for="student-instrument">Instrument</label>
   <div class="col-md-4">
     <select id="student-instrument" name="student-instrument" class="form-control">
-      <option value="1">Guitar</option>
-      <option value="2">Bass</option>
-      <option value="3">Drums</option>
-      <option value="4">Piano</option>
-      <option value="5">Violin</option>
-      <option value="6">Flute</option>
+      <option value="Guitar">Guitar</option>
+      <option value="Bass">Bass</option>
+      <option value="Drums">Drums</option>
+      <option value="Piano">Piano</option>
+      <option value="Violin">Violin</option>
+      <option value="Flute">Flute</option>
     </select>
   </div>
 </div>
@@ -81,23 +81,23 @@ Username</label>
   <label class="col-md-6 control-label" for="student-level">Level</label>
   <div class="col-md-6"> 
     <label class="radio-inline" for="student-level-0">
-      <input type="radio" name="student-level" id="student-level-0" value="1" checked="checked">
+      <input type="radio" name="student-level" id="student-level-0" value="Beginner" checked="checked">
       Beginner
     </label> 
     <label class="radio-inline" for="student-level-1">
-      <input type="radio" name="student-level" id="student-level-1" value="2">
+      <input type="radio" name="student-level" id="student-level-1" value="Moderate">
       Moderate
     </label> 
     <label class="radio-inline" for="student-level-2">
-      <input type="radio" name="student-level" id="student-level-2" value="3">
+      <input type="radio" name="student-level" id="student-level-2" value="Intermediate">
       Intermediate
     </label> 
     <label class="radio-inline" for="student-level-3">
-      <input type="radio" name="student-level" id="student-level-3" value="4">
+      <input type="radio" name="student-level" id="student-level-3" value="Advanced">
       Advanced
     </label> 
     <label class="radio-inline" for="student-level-4">
-      <input type="radio" name="student-level" id="student-level-4" value="5">
+      <input type="radio" name="student-level" id="student-level-4" value="Expert">
       Expert
     </label>
   </div>
@@ -110,6 +110,12 @@ Username</label>
     <textarea class="form-control" id="student-bio" name="student-bio">Bio</textarea>
   </div>
 </div>
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="student-image">
+Image URL</label>
+<div class="col-md-4">
+  <input id="student-image" name="student-image" type="text" placeholder="Image URL" class="form-control input-md" required=""></div></div>
 
 <!-- Button -->
 <div class="form-group">

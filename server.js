@@ -30,7 +30,7 @@ app.get('/students', (req, res) => {
 app.get('/students/:username', (req, res) => {
   console.log("hi");
   Student
-    .find({username: req.params.username})
+    .findOne({username: req.params.username})
     .then(student => res.json(student.apiRepr()))
     .catch(err => {
       console.error(err);
