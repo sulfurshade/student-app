@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
 const studentSchema = mongoose.Schema({
@@ -33,3 +34,4 @@ studentSchema.methods.apiRepr = function() {
 const Student = mongoose.model('Student', studentSchema);
 
 module.exports = {Student};
+
