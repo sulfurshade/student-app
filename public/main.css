@@ -79,6 +79,13 @@ button:hover {
     background-color: #f44336;
 }
 
+.signupbtn {
+  float: right;
+  padding: 10px 18px;
+  width: auto;
+  background-color: blue;
+}
+
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -86,7 +93,7 @@ button:hover {
 }
 
 img.avatar {
-    width: 40%;
+    width: 20%;
     border-radius: 50%;
 }
 
@@ -97,6 +104,7 @@ img.avatar {
 span.psw {
     float: right;
     padding-top: 16px;
+    padding-right: 10px;
 }
 
 .modal {
