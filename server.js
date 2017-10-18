@@ -9,33 +9,36 @@ const passport = require('passport');
 const {usersRouter} = require('./routers/users-router'); // REGISTER USER
 const {studentsRouter} = require('./routers/students-router');
 const {authRouter} = require('./routers/auth-router'); // Login + refresh
-const {basicStrategy, jwtStrategy} = require('./auth/strategies');
+const {localStrategy, jwtStrategy} = require('./auth/strategies');
 
 
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
-
 const app = express();
 
 app.use(express.static('public'));
+app.use(morgan('common')); // Logging
 
-// Logging
-app.use(morgan('common'));
+// create application/json parser
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // CORS
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-    if (req.method === 'OPTIONS') {
-        return res.send(204);
-    }
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+//     res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//     if (req.method === 'OPTIONS') {
+//         return res.send(204);
+//     }
+//     next();
+// });
 
 app.use(passport.initialize());
-passport.use(basicStrategy);
+passport.use('local', localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
@@ -43,24 +46,13 @@ app.use('/api/auth/', authRouter);
 app.use('/api/students/', studentsRouter);
 
 // A protected endpoint which needs a valid JWT to access it
-app.get(
-    '/api/protected',
-    passport.authenticate('jwt', {session: false}),
-    (req, res) => {
-        return res.json({
-            data: 'rosebud'
-        });
-    }
-);
-
-app.get(
-    '/api/unprotected',
-    (req, res) => {
-        return res.json({
-            data: 'rosebud'
-        });
-    }
-);
+app.get('/a-protected-route', passport.authenticate('jwt', {session: false}), (req, res) => {
+  return res.json({ data: 'this is protected'});
+});
+//
+app.get('/some-route', (req, res) => {
+  return res.json({ data: 'hello'});
+});
 
 app.use('*', (req, res) => {
     return res.status(404).json({message: 'Not Found'});

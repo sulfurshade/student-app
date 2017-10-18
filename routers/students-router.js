@@ -1,35 +1,30 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-
 const {Student} = require('../models/students');
-
 const router = express.Router();
-
 const jsonParser = bodyParser.json();
-
-
 
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   Student
-    .find()
-    .then(students => {
-      res.json(students.map(student => student.apiRepr()));
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went terribly wrong'});
-    });
+  .find()
+  .then(students => {
+    res.json(students.map(student => student.apiRepr()));
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({error: 'something went terribly wrong'});
+  });
 });
 
 router.get('/:username', (req, res) => {
   Student
-    .findOne({username: req.params.username})
-    .then(student => res.json(student.apiRepr()))
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went horribly awry'});
-    });
+  .findOne({username: req.params.username})
+  .then(student => res.json(student.apiRepr()))
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({error: 'something went horribly awry'});
+  });
 });
 
 router.post('/', (req, res) => {
@@ -44,33 +39,33 @@ router.post('/', (req, res) => {
   }
 
   Student
-    .create({
-      name: req.body.name,
-      image: req.body.image,
-      instrument: req.body.instrument,
-      level: req.body.level,
-      bio: req.body.bio,
-      username: req.body.username
-    })
-    .then(student => res.status(201).json(student.apiRepr()))
-    .catch(err => {
-        console.error(err);
-        res.status(500).json({error: 'Something went wrong'});
-    });
+  .create({
+    name: req.body.name,
+    image: req.body.image,
+    instrument: req.body.instrument,
+    level: req.body.level,
+    bio: req.body.bio,
+    username: req.body.username
+  })
+  .then(student => res.status(201).json(student.apiRepr()))
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({error: 'Something went wrong'});
+  });
 
 });
 
 
 router.delete('/:id', (req, res) => {
   Student
-    .findByIdAndRemove(req.params.id)
-    .then(() => {
-      res.status(204).json({message: 'success'});
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went terribly wrong'});
-    });
+  .findByIdAndRemove(req.params.id)
+  .then(() => {
+    res.status(204).json({message: 'success'});
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({error: 'something went terribly wrong'});
+  });
 });
 
 
@@ -90,9 +85,9 @@ router.put('/:id', (req, res) => {
   });
 
   Student
-    .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
-    .then(updatedPost => res.status(204).end())
-    .catch(err => res.status(500).json({message: 'Something went wrong'}));
+  .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
+  .then(updatedPost => res.status(204).end())
+  .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
 
 

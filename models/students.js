@@ -14,7 +14,6 @@ const studentSchema = mongoose.Schema({
   logs: [{notes:String, goals:String, date:Date, dueDate:Date}]
 });
 
-
 studentSchema.virtual('studentName').get(function() {
   return `${this.name.firstName} ${this.name.lastName}`.trim();
 });
@@ -34,4 +33,3 @@ studentSchema.methods.apiRepr = function() {
 const Student = mongoose.model('Student', studentSchema);
 
 module.exports = {Student};
-
