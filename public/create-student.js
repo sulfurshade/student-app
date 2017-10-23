@@ -24,7 +24,7 @@ $(function(){
 		}
 		console.log(newStudent);
 		$.ajax({
-			url: `/students`,
+			url: `/api/students`,
 			type: "POST",
 			data: JSON.stringify(newStudent),
 			contentType: "application/json; charset=utf-8",

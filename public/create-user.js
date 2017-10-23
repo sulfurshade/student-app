@@ -1,23 +1,21 @@
 const CREATE_BUTTON = "#user-submit";
 const USER_FIRST = "#user-first-name";
 const USER_LAST = "#user-last-name";
-const USER_USERNAME = "#student-username";
-const USER_PASSWORD = "#student-password";
+const USER_USERNAME = "#user-username";
+const USER_PASSWORD = "#user-password";
 
 $(function(){
 	$(CREATE_BUTTON).click(function(e){
 		e.preventDefault();
 		let newUser = {
-			name: {
-				firstName: $(USER_FIRST).val(),
-				lastName: $(USER_LAST).val()
-			},
+			firstName: $(USER_FIRST).val(),
+			lastName: $(USER_LAST).val(),
 			username: $(USER_USERNAME).val(),
 			password: $(USER_PASSWORD).val(),
 		}
-		console.log(newUser);
+		
 		$.ajax({
-			url: `/users`,
+			url: `/api/users`,
 			type: "POST",
 			data: JSON.stringify(newUser),
 			contentType: "application/json; charset=utf-8",

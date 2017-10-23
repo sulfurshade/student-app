@@ -9,7 +9,7 @@ const passport = require('passport');
 const {usersRouter} = require('./routers/users-router'); // REGISTER USER
 const {studentsRouter} = require('./routers/students-router');
 const {authRouter} = require('./routers/auth-router'); // Login + refresh
-const {basicStrategy, jwtStrategy} = require('./auth/strategies');
+const {localStrategy, jwtStrategy} = require('./auth/strategies');
 
 
 mongoose.Promise = global.Promise;
@@ -19,6 +19,9 @@ const {PORT, DATABASE_URL} = require('./config');
 const app = express();
 
 app.use(express.static('public'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Logging
 app.use(morgan('common'));
@@ -35,7 +38,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(passport.initialize());
-passport.use(basicStrategy);
+passport.use("local", localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);

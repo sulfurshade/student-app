@@ -1,5 +1,7 @@
 const passport = require('passport');
-const {BasicStrategy} = require('passport-http');
+// const {LocalStrategy} = require('passport-http');
+var LocalStrategy = require('passport-local').Strategy;
+
 const {
     // Assigns the Strategy export to the name JwtStrategy using object
     // destructuring
@@ -11,7 +13,7 @@ const {
 const {User} = require('../models/users');
 const {JWT_SECRET} = require('../config');
 
-const basicStrategy = new BasicStrategy((username, password, callback) => {
+const localStrategy = new LocalStrategy((username, password, callback) => {
     let user;
   console.log("here")
     User.findOne({username: username})
@@ -57,4 +59,4 @@ const jwtStrategy = new JwtStrategy(
     }
 );
 
-module.exports = {basicStrategy, jwtStrategy};
+module.exports = {localStrategy, jwtStrategy};
