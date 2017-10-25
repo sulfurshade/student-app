@@ -8,6 +8,9 @@ const STUDENT_BIO = "#student-bio";
 const STUDENT_IMAGE = "#student-image";
 
 $(function(){
+
+	var token = localStorage.getItem("token");
+
 	$(CREATE_BUTTON).click(function(e){
 		e.preventDefault();
 		var levelRadio = $('input[name=student-level]');
