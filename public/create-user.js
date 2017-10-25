@@ -20,6 +20,7 @@ $(function(){
 			data: JSON.stringify(newUser),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
+			headers: { 'Authorization': `Bearer ${token}` },
 			success: function(data){
 				console.log("yay! data");
 				console.log(data);

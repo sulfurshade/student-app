@@ -22,7 +22,7 @@ router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     });
 });
 
-router.get('/:username', (req, res) => {
+router.get('/:username', passport.authenticate('jwt', {session: false}), (req, res) => {
   Student
     .findOne({username: req.params.username})
     .then(student => res.json(student.apiRepr()))
@@ -32,7 +32,7 @@ router.get('/:username', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   const requiredFields = ['name', 'bio', 'image', 'instrument', 'level', 'username'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
   Student
     .findByIdAndRemove(req.params.id)
     .then(() => {
@@ -74,7 +74,7 @@ router.delete('/:id', (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'

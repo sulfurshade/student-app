@@ -27,14 +27,14 @@ $(function(){
 			dataType: "json",
 			success: function(data){
 				console.log("yay! authenticated");
-				state.loggedIn = true;
-				state.token = data.authToken;
-			// do stuff/ goto a page
+				localStorage.setItem('token', data.authToken);
+
 		},
 		error: function(errorData){
 			console.log("we couldn't authenticate");
 		},
 	});
+
 	})
 
 })

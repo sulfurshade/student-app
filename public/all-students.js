@@ -4,13 +4,16 @@ const STUDENT_IMAGE = ".student-image";
 const STUDENT_NAME = ".student-name";
 const STUDENT_INFO = ".student-info";
 
+var token = localStorage.getItem("token");
+
 $(function(){
 	$.ajax({
-		url: `/students`,
+		url: `/api/students`,
 		type: "GET",
 		// data: JSON.stringify(newStudent),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
+		headers: { 'Authorization': `Bearer ${token}` },
 		success: function(data){
 			console.log("yay! data");
 			console.log(data);
