@@ -15,7 +15,7 @@ $(function(){
 	var username = window.location.hash.substr(1);
 	console.log(username);
 	$.ajax({
-		url: `/students/${username}`,
+		url: `/api/students/${username}`,
 		type: "GET",
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",

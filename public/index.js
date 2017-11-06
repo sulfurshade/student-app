@@ -28,7 +28,7 @@ $(function(){
 			success: function(data){
 				console.log("yay! authenticated");
 				localStorage.setItem('token', data.authToken);
-
+				window.location.href = "/all-students.html";
 		},
 		error: function(errorData){
 			console.log("we couldn't authenticate");
