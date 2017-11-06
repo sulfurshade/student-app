@@ -31,12 +31,13 @@ $(function(){
 		},
 	});
 	function renderStudent(studentInfo){
+		console.log(studentInfo);
 		var student = $(STUDENT_BOX);
-		student.find(STUDENT_NAME).text(studentInfo.name);
-		student.find(STUDENT_INSTRUMENT).text(studentInfo.instrument);
-		student.find(STUDENT_LEVEL).text(studentInfo.level);
-		student.find(STUDENT_BIO).text(studentInfo.bio);
-		student.find(STUDENT_IMAGE).attr("src", studentInfo.image);
+		student.find(STUDENT_NAME).text(studentInfo[0].name);
+		student.find(STUDENT_INSTRUMENT).text(studentInfo[0].instrument);
+		student.find(STUDENT_LEVEL).text(studentInfo[0].level);
+		student.find(STUDENT_BIO).text(studentInfo[0].bio);
+		student.find(STUDENT_IMAGE).attr("src", studentInfo[0].image);
 		// $(STUDENT_LOGS);
 	// 	for (let student of studentsArray){
 	// 		console.log(student.image);
