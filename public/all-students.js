@@ -7,6 +7,10 @@ const STUDENT_INFO = ".student-info";
 var token = localStorage.getItem("token");
 
 $(function(){
+
+	// send auth header with the token.
+	var token = localStorage.getItem("token");
+
 	$.ajax({
 		url: `/api/students`,
 		type: "GET",
@@ -26,7 +30,6 @@ $(function(){
 	});
 	function renderStudents(studentsArray){
 		for (let student of studentsArray){
-			console.log(student.image);
 			var clonedStudent = $(TEST_STUDENT).clone();
 			clonedStudent.find(STUDENT_IMAGE).attr('src', student.image);
 			clonedStudent.find(STUDENT_NAME).text(student.name);

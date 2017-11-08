@@ -11,9 +11,11 @@ const LOG_NOTES = "#log-notes";
 const LOG_GOALS = "#log-goals";
 
 $(function(){
+
 	var token = localStorage.getItem("token");
 	var username = window.location.hash.substr(1);
 	console.log(username);
+
 	$.ajax({
 		url: `/api/students/${username}`,
 		type: "GET",

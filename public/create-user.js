@@ -13,7 +13,7 @@ $(function(){
 			username: $(USER_USERNAME).val(),
 			password: $(USER_PASSWORD).val(),
 		}
-		
+
 		$.ajax({
 			url: `/api/users`,
 			type: "POST",

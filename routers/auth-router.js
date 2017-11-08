@@ -19,7 +19,6 @@ router.post(
     // The user provides a username and password to login
     passport.authenticate('local', {session: false}),
     (req, res) => {
-        console.log("hey")
         const authToken = createAuthToken(req.user.apiRepr());
         res.json({authToken});
     }
