@@ -16,7 +16,16 @@ var Student = (function () {
   }
 
   function loadAll () {
-    return Promise.reject('Method not implemented')
+    var settings = {
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json'
+    }
+
+    if (JWT_TOKEN) {
+      settings['Authorization'] = 'Bearer ' + JWT_TOKEN
+    }
+
+    return jQuery.ajax(API_BASE_URL + '/students', settings)
   }
 
   function save () {
