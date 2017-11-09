@@ -59,8 +59,16 @@ var Student = (function () {
     return jQuery.ajax(API_BASE_URL + '/students/' + student.username, settings)
   }
 
-  function destroy () {
-    return Promise.reject('Method not implemented')
+  function destroy (username) {
+    var settings = Object.assign({}, AJAX_DEFAULT_SETTINGS, {
+      method: 'DELETE'
+    })
+
+    if (JWT_TOKEN) {
+      settings['Authorization'] = 'Bearer ' + JWT_TOKEN
+    }
+
+    return jQuery.ajax(API_BASE_URL + '/students/' + student.username, settings)
   }
 
   function setToken (jwtToken) {
