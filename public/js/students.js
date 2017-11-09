@@ -43,7 +43,7 @@ var Student = (function () {
     return Promise.reject('Method not implemented')
   }
 
-  function delete () {
+  function destroy () {
     return Promise.reject('Method not implemented')
   }
 
@@ -56,7 +56,7 @@ var Student = (function () {
     loadAll: loadAll,
     create: create,
     update: update,
-    delete: delete,
+    destroy: destroy,
     setToken: setToken
   }
 })()
