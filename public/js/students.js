@@ -1,3 +1,10 @@
+/**
+ * Student class
+ *
+ * Provides methods for student manipulations using the API.
+ * @see https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript
+ * @see http://api.jquery.com/jQuery.ajax/
+ */
 var Student = (function () {
   var AJAX_DEFAULT_SETTINGS = {
     contentType: 'application/json; charset=utf-8',
