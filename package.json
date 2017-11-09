@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "serve:dev": "nodemon server.js",
     "test": "mocha"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "chai": "^4.0.1",
     "chai-http": "^3.0.0",
     "faker": "^3.1.0",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "nodemon": "^1.12.1"
   }
 }
