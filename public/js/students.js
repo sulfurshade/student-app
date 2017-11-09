@@ -26,7 +26,7 @@ var Student = (function () {
     return jQuery.ajax(API_BASE_URL + '/students', settings)
   }
 
-  function save (student) {
+  function create (student) {
     var settings = Object.assign({}, AJAX_DEFAULT_SETTINGS, {
       method: 'POST',
       data: student
@@ -50,7 +50,7 @@ var Student = (function () {
   return {
     loadOne: loadOne,
     loadAll: loadAll,
-    save: save,
+    create: create,
     update: update,
     delete: delete
   }
