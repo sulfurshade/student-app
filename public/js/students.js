@@ -47,11 +47,16 @@ var Student = (function () {
     return Promise.reject('Method not implemented')
   }
 
+  function setToken (jwtToken) {
+    JWT_TOKEN = jwtToken
+  }
+
   return {
     loadOne: loadOne,
     loadAll: loadAll,
     create: create,
     update: update,
-    delete: delete
+    delete: delete,
+    setToken: setToken
   }
 })()
