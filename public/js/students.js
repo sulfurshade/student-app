@@ -1,12 +1,13 @@
 var Student = (function () {
+  var AJAX_DEFAULT_SETTINGS = {
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json'
+  }
   var API_BASE_URL = '//api';
   var JWT_TOKEN = null;
 
   function loadOne (username) {
-    var settings = {
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json'
-    }
+    var settings = Object.assign({}, AJAX_DEFAULT_SETTINGS)
 
     if (JWT_TOKEN) {
       settings['Authorization'] = 'Bearer ' + JWT_TOKEN
@@ -16,10 +17,7 @@ var Student = (function () {
   }
 
   function loadAll () {
-    var settings = {
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json'
-    }
+    var settings = Object.assign({}, AJAX_DEFAULT_SETTINGS)
 
     if (JWT_TOKEN) {
       settings['Authorization'] = 'Bearer ' + JWT_TOKEN
