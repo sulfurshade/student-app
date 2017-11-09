@@ -46,8 +46,17 @@ var Student = (function () {
     return jQuery.ajax(API_BASE_URL + '/students', settings)
   }
 
-  function update () {
-    return Promise.reject('Method not implemented')
+  function update (student) {
+    var settings = Object.assign({}, AJAX_DEFAULT_SETTINGS, {
+      method: 'PUT',
+      data: student
+    })
+
+    if (JWT_TOKEN) {
+      settings['Authorization'] = 'Bearer ' + JWT_TOKEN
+    }
+
+    return jQuery.ajax(API_BASE_URL + '/students/' + student.username, settings)
   }
 
   function destroy () {
