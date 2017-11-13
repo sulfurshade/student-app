@@ -1,6 +1,7 @@
 const TEST_STUDENT = "#example-student";
 const STUDENT_LIST = "#student-list";
 const STUDENT_IMAGE = ".student-image";
+const STUDENT_IMAGE_LINK = "#student-image";
 const STUDENT_NAME = ".student-name";
 const STUDENT_INFO = ".student-info";
 
@@ -24,6 +25,7 @@ $(function(){
 			renderStudents(data);
 		},
 		error: function(errorData){
+			window.location = "/index.html#redirected";
 			console.log("err");
 			console.log(errorData);
 		},
@@ -32,6 +34,7 @@ $(function(){
 		for (let student of studentsArray){
 			var clonedStudent = $(TEST_STUDENT).clone();
 			clonedStudent.find(STUDENT_IMAGE).attr('src', student.image);
+			clonedStudent.find(STUDENT_IMAGE_LINK).attr('href', "/student-page.html#" + (student.username));
 			clonedStudent.find(STUDENT_NAME).text(student.name);
 			clonedStudent.find(STUDENT_NAME).attr('href', "/student-page.html#" + (student.username));
 			clonedStudent.find(STUDENT_INFO).text(student.bio);
