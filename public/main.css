@@ -167,3 +167,7 @@ span.psw {
        width: 100%;
     }
 }
+
+#wrong-user-or-pwd {
+  color: red;
+}
