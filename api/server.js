@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
+const path = require('path');
 
 
 const {usersRouter} = require('./routers/users-router'); // REGISTER USER
@@ -20,7 +21,7 @@ console.log(DATABASE_URL)
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static(path.resolve(__dirname, '../spa')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
