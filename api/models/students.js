@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
+const { Log } = require('./logs');
 
 const studentSchema = mongoose.Schema({
   name: {
@@ -10,8 +11,7 @@ const studentSchema = mongoose.Schema({
   instrument: {type: String, required: true},
   level: {type: String, required: true},
   username: {type: String, required: true, unique: true},
-  bio: {type: String, required: true},
-  logs: [{notes:String, goals:String, date:Date, dueDate:Date}]
+  bio: {type: String, required: true}
 });
 
 
@@ -29,6 +29,10 @@ studentSchema.methods.apiRepr = function() {
     bio: this.bio,
     username: this.username
   };
+}
+
+studentSchema.methods.logs = function () {
+  return Log.find({ studentId: this._id.toString() })
 }
 
 const Student = mongoose.model('Student', studentSchema);
