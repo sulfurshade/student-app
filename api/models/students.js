@@ -10,8 +10,7 @@ const studentSchema = mongoose.Schema({
   instrument: {type: String, required: true},
   level: {type: String, required: true},
   username: {type: String, required: true, unique: true},
-  bio: {type: String, required: true},
-  logs: [{notes:String, goals:String, date:Date, dueDate:Date}]
+  bio: {type: String, required: true}
 });
 
 
