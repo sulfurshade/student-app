@@ -147,4 +147,26 @@ router.get('/', (req, res) => {
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  User
+    .findOne({id: req.params.id})
+    .then(users => res.json(user.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went horribly awry'});
+    });
+});
+
+router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  User
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.status(204).json({message: 'success'});
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
 module.exports = {usersRouter:router};

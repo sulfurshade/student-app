@@ -32,6 +32,16 @@ router.get('/:username', passport.authenticate('jwt', {session: false}), (req, r
     });
 });
 
+router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  Student
+    .findOne({id: req.params.id})
+    .then(student => res.json(student.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went horribly awry'});
+    });
+});
+
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   const requiredFields = ['name', 'bio', 'image', 'instrument', 'level', 'username'];
   for (let i=0; i<requiredFields.length; i++) {
