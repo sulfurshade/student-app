@@ -5,8 +5,8 @@ const schema = mongoose.Schema({
   studentId: { type: String, required: true },
   date: { type: Date, required: true },
   dueDate: { type: Date, required: true },
-  goals: { type: String },
-  notes: { type: String }
+  goals: { type: String, required: true },
+  notes: { type: String, required: true }
 });
 
 schema.methods.apiRepr = function() {
