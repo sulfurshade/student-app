@@ -1,10 +1,11 @@
-require('dotenv').config({path: '../.env'});
+const path = require('path');
+require('dotenv').config({path: path.resolve(__dirname, '../.env')});
+
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
-const path = require('path');
 
 
 const {usersRouter} = require('./routers/users-router'); // REGISTER USER
