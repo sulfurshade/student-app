@@ -19,17 +19,26 @@ studentSchema.virtual('studentName').get(function() {
   return `${this.name.firstName} ${this.name.lastName}`.trim();
 });
 
-studentSchema.methods.apiRepr = function() {
-  return {
-    id: this._id,
-    name: this.studentName,
-    image: this.image,
-    instrument: this.instrument,
-    level: this.level,
-    bio: this.bio,
-    username: this.username
-  };
+studentSchema.methods.apiRepr = () => {
+  const repr = { id: this._id }
+
+  Object.keys(this).forEach(key => {
+    if (key !== '_id') Object.assign(repr, { [key]: this[key] })
+  })
+
+  return repr
 }
+// studentSchema.methods.apiRepr = function() {
+//   return {
+//     id: this._id,
+//     name: this.studentName,
+//     image: this.image,
+//     instrument: this.instrument,
+//     level: this.level,
+//     bio: this.bio,
+//     username: this.username
+//   };
+// }
 
 studentSchema.methods.logs = function () {
   return Log.find({ studentId: this._id.toString() })

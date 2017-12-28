@@ -17,13 +17,23 @@ const UserSchema = mongoose.Schema({
     lastName: {type: String, default: ''}
 });
 
-UserSchema.methods.apiRepr = function() {
-    return {
-        username: this.username || '',
-        firstName: this.firstName || '',
-        lastName: this.lastName || ''
-    };
-};
+UserSchema.methods.apiRepr = () => {
+  const repr = { id: this._id }
+
+  Object.keys(this).forEach(key => {
+    if (key !== '_id') Object.assign(repr, { [key]: this[key] })
+  })
+
+  return repr
+}
+// UserSchema.methods.apiRepr = function() {
+//     return {
+//         id: this._id,
+//         username: this.username || '',
+//         firstName: this.firstName || '',
+//         lastName: this.lastName || ''
+//     };
+// };
 
 UserSchema.methods.validatePassword = function(password) {
     return bcrypt.compare(password, this.password);
