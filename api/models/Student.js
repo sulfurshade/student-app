@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const { Log } = require('./logs');
+const { Log } = require('./Log');
 
 const studentSchema = mongoose.Schema({
   name: {
