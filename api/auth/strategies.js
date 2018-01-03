@@ -10,7 +10,7 @@ const {
     ExtractJwt
 } = require('passport-jwt');
 
-const {User} = require('../models/users');
+const User = require('../models/User');
 const {JWT_SECRET} = require('../config');
 
 const localStrategy = new LocalStrategy((username, password, callback) => {

@@ -10,25 +10,17 @@ const schema = mongoose.Schema({
 });
 
 schema.methods.apiRepr = () => {
-  const repr = { id: this._id }
+  const repr = { id: this._id };
 
   Object.keys(this).forEach(key => {
-    if (key !== '_id') Object.assign(repr, { [key]: this[key] })
-  })
+    if (key !== '_id') {
+      Object.assign(repr, { [key]: this[key] });
+    }
+  });
 
-  return repr
+  return repr;
 }
-// schema.methods.apiRepr = function() {
-//   return {
-//     id: this._id,
-//     studentId: this.studentId,
-//     date: this.date,
-//     dueDate: this.dueDate,
-//     goals: this.goals,
-//     notes: this.notes
-//   };
-// }
 
 const Log = mongoose.model('Log', schema);
 
-module.exports = {Log};
+module.exports = Log;
