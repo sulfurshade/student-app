@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const Log = require('./Log');
 
-const studentSchema = mongoose.Schema({
+const schema = mongoose.Schema({
   name: {
     firstName: String,
     lastName: String
@@ -15,11 +15,11 @@ const studentSchema = mongoose.Schema({
 });
 
 
-studentSchema.virtual('studentName').get(function() {
+schema.virtual('studentName').get(function() {
   return `${this.name.firstName} ${this.name.lastName}`.trim();
 });
 
-studentSchema.methods.apiRepr = () => {
+schema.methods.apiRepr = () => {
   const repr = { id: this._id };
 
   Object.keys(this).forEach(key => {
@@ -31,10 +31,10 @@ studentSchema.methods.apiRepr = () => {
   return repr;
 }
 
-studentSchema.methods.logs = function () {
+schema.methods.logs = function () {
   return Log.find({ studentId: this._id.toString() })
 }
 
-const Student = mongoose.model('Student', studentSchema);
+const Student = mongoose.model('Student', schema);
 
 module.exports = Student;
