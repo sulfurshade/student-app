@@ -1,18 +1,16 @@
-const path = require('path');
-require('dotenv').config({path: path.resolve(__dirname, '../.env')});
-
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
+const path = require('path');
 
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const {usersRouter} = require('./routers/users-router'); // REGISTER USER
 const {studentsRouter} = require('./routers/students-router');
 const {authRouter} = require('./routers/auth-router'); // Login + refresh
 const {localStrategy, jwtStrategy} = require('./auth/strategies');
-
 
 mongoose.Promise = global.Promise;
 
