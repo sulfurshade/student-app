@@ -113,7 +113,7 @@ function pageAllStudents () {
 				renderStudents(data);
 			},
 			error: function(errorData){
-				window.location = "/index.html#redirected";
+				window.location = "/#redirected";
 				console.log("err");
 				console.log(errorData);
 			},
