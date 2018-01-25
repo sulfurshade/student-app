@@ -1,6 +1,21 @@
+function renderNavbar () {
+	let navbarMarkup = document.getElementById('tpl-navbar').innerHTML
+
+	if (['', '#', '#!/', , '#!/'].includes(window.location.hash)) {
+		const left = navbarMarkup.substr(0, navbarMarkup.indexOf('<!-- navbar:start -->'))
+		const right = navbarMarkup.substr(navbarMarkup.indexOf('<!-- navbar:end -->') + '<!-- navbar:end -->'.length, navbarMarkup.length)
+
+		navbarMarkup = `${left} ${right}`
+	}
+
+	return navbarMarkup
+}
+
 
 function pageIndex () {
 	var html = document.getElementById('tpl-index').innerHTML
+		.replace('@navbar', renderNavbar())
+
 	render(html)
 	const LOGIN_BUTTON = ".js-login-button";
 	const LOGIN_MODAL = "#modal-1";
@@ -46,6 +61,8 @@ function pageIndex () {
 
 function pageCreateUser () {
 	var html = document.getElementById('tpl-create-user').innerHTML
+		.replace('@navbar', renderNavbar())
+
 	render(html)
 	const CREATE_BUTTON = "#user-submit";
 	const USER_FIRST = "#user-first-name";
@@ -85,6 +102,8 @@ function pageCreateUser () {
 
 function pageAllStudents () {
 	var html = document.getElementById('tpl-all-students').innerHTML
+		.replace('@navbar', renderNavbar())
+
 	render(html)
 	const TEST_STUDENT = "#example-student";
 	const STUDENT_LIST = "#student-list";
@@ -136,6 +155,8 @@ function pageAllStudents () {
 
 function pageCreateStudent () {
 	var html = document.getElementById('tpl-create-student').innerHTML
+		.replace('@navbar', renderNavbar())
+
 	render(html)
 	const CREATE_BUTTON = "#student-submit";
 	const STUDENT_FIRST = "#first-name";
@@ -187,6 +208,8 @@ function pageCreateStudent () {
 
 function pageStudentPage (context) {
 	var html = document.getElementById('tpl-student-page').innerHTML
+		.replace('@navbar', renderNavbar())
+
 	render(html)
 	const STUDENT_BOX = ".student-box";
 	const STUDENT_NAME = "#sp-name";
@@ -242,6 +265,18 @@ function pageStudentPage (context) {
 		}
 
 }
+
+// function renderPage (templateId) {
+// 	const menuMarkup = document.getElementById('tpl-navbar')
+// 	const contentMarkup = document.getElementById(templateId)
+// 	const pageMarkup = document.getElementById('tpl-page')
+//
+// 	const finalMarkup = pageMarkup
+// 		.replace('@menu', menuMarkup)
+// 		.replace('@content', contentMarkup)
+//
+// 	render(finalMarkup)
+// }
 
 function render (payload) {
 	var $view = document.getElementById('view')
