@@ -175,7 +175,7 @@ function pageCreateStudent () {
 					console.log(data);
 				},
 				error: function(errorData){
-					window.location = "/index.html#redirected";
+					// window.location = "/students#redirected";
 					console.log("err");
 					console.log(errorData);
 				},
