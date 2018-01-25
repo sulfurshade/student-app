@@ -7,7 +7,7 @@ const schema = mongoose.Schema({
     firstName: String,
     lastName: String
   },
-  image: {type: String, required: true},
+  image: {type: String},
   instrument: {type: String, required: true},
   level: {type: String, required: true},
   username: {type: String, required: true, unique: true},
