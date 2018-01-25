@@ -1,3 +1,4 @@
+
 function pageIndex () {
 	var html = document.getElementById('tpl-index').innerHTML
 	render(html)
@@ -33,8 +34,7 @@ function pageIndex () {
 				$(WRONG_INPUT).addClass("hidden");
 				console.log("yay! authenticated");
 				localStorage.setItem('token', data.authToken);
-				// window.location.href = "/all-students.html";
-				page('/all-students');
+				page('/students');
 			},
 			error: function(errorData){
 				console.log("we couldn't authenticate");
@@ -248,14 +248,11 @@ function render (payload) {
 	$view.innerHTML = payload
 }
 
+
 page('/', pageIndex);
 page('/create-user', pageCreateUser);
 page('/students', pageAllStudents);
 page('/create-student', pageCreateStudent);
 page('/students/:id', pageStudentPage);
-
-// page('/student-page', function () {
-// 	pageStudentPage();
-// })
 
 $(() => page({ hashbang: true }))
