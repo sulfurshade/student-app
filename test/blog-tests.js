@@ -18,8 +18,8 @@ function tearDownDb() {
   });
 }
 
-function seedBlogPostData() {
-  console.info('seeding blog post data');
+function seedStudentAppData() {
+  console.info('seeding student app data');
   const seedData = [];
   for (let i=1; i<=10; i++) {
     seedData.push({
@@ -31,15 +31,15 @@ function seedBlogPostData() {
       content: faker.lorem.text()
     });
   }
-  return BlogPost.insertMany(seedData);
+  return StudentApp.insertMany(seedData);
 }
 
-describe('blog posts API resource', function() {
+describe('student apps API resource', function() {
   before(function() {
     return runServer(TEST_DATABASE_URL);
   });
   beforeEach(function() {
-    return seedBlogPostData();
+    return seedStudentAppData();
   });
   afterEach(function() {
     return tearDownDb();
