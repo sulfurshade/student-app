@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node api/server.js",
     "serve:dev": "nodemon api/server.js",
-    "test": "echo 'Tests temporarily disabled'"
+    "test": "mocha test/api/server.test.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.0",
@@ -13,7 +13,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.4.1",
-    "mongoose": "^4.7.4",
+    "mongoose": "^5.0.6",
     "morgan": "^1.7.0",
     "page": "^1.7.1",
     "passport": "^0.3.2",
@@ -32,7 +32,6 @@
     "chai-http": "^3.0.0",
     "faker": "^3.1.0",
     "mocha": "^3.4.2",
-    "mongodb": "^3.0.1",
     "nodemon": "^1.12.1"
   }
 }
