@@ -4,27 +4,20 @@ const chai = require('chai')
 const mongoose = require('mongoose')
 
 const { seedDatabase, dropDatabase } = require('../lib/common')
+const { app, runServer, closeServer } = require('../../api/server')
 const { TEST_DATABASE_URL } = require('../../api/config')
 
-const { app, runServer, closeServer } = require('../../api/server')
-
+chai.use(require('chai-http'))
 const expect = chai.expect
 
-mongoose.set('useMongoClient', true)
 mongoose.Promise = Promise
 
 describe('Student Tracker', () => {
-  before(function () {
-    this.timeout(5000)
-
+  before(() => {
     return new Promise((res, rej) => {
-      mongoose.connect(TEST_DATABASE_URL, err => {
-        if (err) return rej(err)
-
-        res()
-      })
+      mongoose.connect(TEST_DATABASE_URL, err => err ? rej(err) : res())
     })
-      .then(console.log.bind(console, 'connected!'))
+      .then(() => console.log('MongoDB connected'))
       .then(dropDatabase)
   })
   beforeEach(seedDatabase)
@@ -32,8 +25,16 @@ describe('Student Tracker', () => {
 
   describe('/users endpoint', () => {
     it('lists all students', () => {
-      expect(true).to.not.be(false)
+      return chai.request(app)
+        .get('/api/users')
+        .then(res => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('array')
+          expect(res.body[0]).to.be.an('object')
+        })
     })
+
     it('creates a new student')
   })
 
