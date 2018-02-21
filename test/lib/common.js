@@ -1,27 +1,12 @@
 const faker = require('faker')
-const { MongoClient } = require('mongodb')
 const mongoose = require('mongoose')
 const util = require('util')
 
 const { TEST_DATABASE_URL } = require('../../api/config')
-const DATABASE_NAME = TEST_DATABASE_URL.slice(TEST_DATABASE_URL.lastIndexOf('/') + 1)
 
 const User = require('../../api/models/User')
 const Student = require('../../api/models/Student')
 const Log = require('../../api/models/Log')
-
-/**
- * Creates a MongoDB client, saves it into an internal state (`_client`) and
- * returns it as a promise. Returns the client directly into subsequent calls.
- */
-const mongoDBClient = (() => {
-  let _client
-
-  return () => (_client
-    ? Promise.resolve(_client)
-    : util.promisify(MongoClient.connect)(TEST_DATABASE_URL)
-      .then(client => _client = client))
-})()
 
 function seedDatabase() {
   return Promise.resolve()
@@ -56,13 +41,7 @@ function seedDatabase() {
  * Deletes the testing database if it exists
  */
 function dropDatabase() {
-  return mongoDBClient()
-    .then(client => client.db(DATABASE_NAME))
-    .then(db => {
-      if (db) {
-        db.command({ dropDatabase: 1 })
-      }
-    })
+  return mongoose.connection.dropDatabase()
 }
 
 function createFakeUser () {
