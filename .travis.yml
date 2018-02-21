@@ -1,5 +1,9 @@
 language: node_js
 node_js: node
+services:
+  - mongodb
+env:
+  - JWT_SECRET=super-secret-hash
 deploy:
   provider: heroku
   app: sulfurshade-student-app
