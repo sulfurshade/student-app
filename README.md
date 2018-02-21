@@ -1,5 +1,7 @@
 # Student Tracker
 
+[![Build Status](https://travis-ci.org/sulfurshade/student-app.svg?branch=master)](https://travis-ci.org/sulfurshade/student-app)
+
 ## Architecture
 
 **API**
