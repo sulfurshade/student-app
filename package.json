@@ -1,11 +1,14 @@
 {
-  "name": "student-app-capstone-jwt",
-  "version": "0.0.1",
-  "description": "",
+  "name": "student-app",
+  "version": "1.0.0",
+  "description": "Thinkful's NODE-001 capstone",
+  "author": "Joey Wolter <joeyxwolter@gmail.com>",
+  "main": "api/server.js",
   "scripts": {
     "start": "node api/server.js",
-    "serve:dev": "nodemon api/server.js",
-    "test": "mocha test/api/server.test.js"
+    "serve": "nodemon api/server.js",
+    "test": "mocha test/api/server.test.js",
+    "test:watch": "mocha -w test/api/server.test.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.0",
@@ -21,17 +24,12 @@
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0"
   },
-  "keywords": [
-    "node",
-    "hyperdev",
-    "express"
-  ],
-  "license": "ISC",
   "devDependencies": {
     "chai": "^4.0.1",
     "chai-http": "^3.0.0",
     "faker": "^3.1.0",
     "mocha": "^3.4.2",
     "nodemon": "^1.12.1"
-  }
+  },
+  "license": "ISC"
 }
