@@ -13,7 +13,9 @@ const expect = chai.expect
 mongoose.Promise = Promise
 
 describe('Student Tracker', () => {
-  before(() => {
+  before(function () {
+    this.timeout(5000)
+
     return new Promise((res, rej) => {
       mongoose.connect(TEST_DATABASE_URL, err => err ? rej(err) : res())
     })
@@ -35,7 +37,21 @@ describe('Student Tracker', () => {
         })
     })
 
-    it('creates a new student')
+    it('creates a new student', () => {
+      return chai.request(app)
+        .post('/api/users')
+        .send({
+          foo: 'bar'
+          // username: 'john-doe',
+          // password: 'lololol',
+          // firstName: 'John',
+          // lastName: 'Doe'
+        })
+        .then(res => {
+          expect(res).to.have.status(201)
+          // expect
+        })
+    })
   })
 
   describe('/users/:id', () => {
