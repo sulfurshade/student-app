@@ -11,16 +11,24 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    firstName: {type: String, default: ''},
-    lastName: {type: String, default: ''}
+    firstName: {
+      type: String,
+      required: true
+    },
+    lastName: {
+      type: String,
+      required: true
+    }
 });
 
-schema.methods.apiRepr = () => {
+schema.methods.apiRepr = function () {
+  // this = document
+  const obj = this.toObject();
   const repr = { id: this._id };
 
-  Object.keys(this).forEach(key => {
-    if (key !== '_id') {
-      Object.assign(repr, { [key]: this[key] });
+  Object.keys(obj).forEach(key => {
+    if (!['_id', 'password', '__v'].includes(key)) {
+      Object.assign(repr, { [key]: obj[key] });
     }
   })
 
