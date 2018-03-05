@@ -1,6 +1,7 @@
 # Student Tracker
 
 [![Build Status](https://travis-ci.org/sulfurshade/student-app.svg?branch=master)](https://travis-ci.org/sulfurshade/student-app)
+[![NSP Status](https://nodesecurity.io/orgs/sulfurshade/projects/810a49e4-70bb-40bc-b088-4d9fcaf80f1b/badge)](https://nodesecurity.io/orgs/sulfurshade/projects/810a49e4-70bb-40bc-b088-4d9fcaf80f1b)
 
 ## Architecture
 
