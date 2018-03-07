@@ -69,20 +69,20 @@ describe('Student Tracker', () => {
     it('shows a user', () => {
       let user
 
-      User.findOne()
+      return User.findOne()
         .then((doc) => (user = doc.toObject()))
-        .then(() => chai.request(app).get(`api/users/${user._id}`))
+        .then(() => chai.request(app).get(`/api/users/${user._id}`))
         .then((res) => {
           expect(res).to.have.status(200)
           expect(res).to.be.json
           expect(res.body).to.be.an('object')
-          expect(res.body.id).to.equal(user._id)
+          expect(res.body.id).to.equal(user._id.toString())
 
           Object.keys(user).forEach((key) => {
-            if (['_id', 'password'].includes(key)) return
+            if (['_id', 'password', '__v'].includes(key)) return
 
-            expect(res.body).to.have.key(key)
-            expect(res.body[key]).to.equal(user[key])
+            expect(res.body[key]).to.not.be.undefined
+            expect(user[key]).to.equal(res.body[key])
           })
         })
     })
