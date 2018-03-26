@@ -86,34 +86,217 @@ describe('Student Tracker', () => {
           })
         })
     })
-    it('updates a user')
-    it('deletes a user')
+
+    it('updates a user', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${user._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    it('deletes a user', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${user._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
   })
 
   describe('/auth endpoint', () => {
-    it('signs in a user')
-    it('signs out a user')
+    it('signs in a user', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${user._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    it('signs out a user', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${user._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
   })
 
   describe('/students endpoint', () => {
-    it('lists all students')
-    it('creates a new student')
+    it('lists all students', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${students._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    it('creates a new student', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${students._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
   })
 
   describe('/students/:id', () => {
-    it('shows a student entry')
-    it('updates a student entry')
-    it('deletes a student entry')
+    it('shows a student entry', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${Student._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    it('updates a student entry', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${Student._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    it('deletes a student entry', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${Student._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
   })
 
   describe('/logs endpoint', () => {
-    it('lists all log entries')
-    it('creates a new log entry')
+    xit('lists all log entries', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${logs._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    xit('creates a new log entry', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${log._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
   })
 
   describe('/logs/:id', () => {
-    it('shows a log entry')
-    it('updates a log entry')
-    it('deletes a log entry')
+    xit('shows a log entry', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${log._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    xit('updates a log entry', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${log._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
+    xit('deletes a log entry', () => {
+      let user
+
+      return User.findOne()
+        .then((doc) => (user = doc.toObject()))
+        .then(() => chai.request(app).get(`/api/users/${log._id}`))
+        .then((res) => {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.an('object')
+          })
+        })
+    })
+
   })
 })
