@@ -42,6 +42,13 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(500).json({error: true, reason: JSON.stringify(err) }))
 })
 
+router.put('/:id', jsonParser, (req, res) => {
+  // TODO: entirely replace document properties without throwing model validations
+  User.findByIdAndUpdate(req.params.id, req.body)
+    .then(doc => res.json(doc.apiRepr()))
+    .catch(err => res.status(500).json({error: true, reason: JSON.stringify(err) }))
+})
+
 router.delete('/:id', [
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
