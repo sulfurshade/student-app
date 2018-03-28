@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node api/server.js",
     "serve": "nodemon api/server.js",
-    "test": "mocha test/api/server.test.js",
-    "test:watch": "mocha -w test/api/server.test.js"
+    "test": "mocha --recursive",
+    "test:watch": "mocha --recursive -w"
   },
   "dependencies": {
     "bcryptjs": "^2.4.0",
