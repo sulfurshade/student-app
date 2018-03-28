@@ -10,6 +10,7 @@ const { TEST_DATABASE_URL } = require('../../api/config')
 const User = require('../../api/models/User')
 
 chai.use(require('chai-http'))
+chai.use(require('chai-as-promised'))
 const expect = chai.expect
 
 mongoose.Promise = Promise
@@ -21,8 +22,8 @@ describe('Student Tracker', () => {
     return new Promise((res, rej) => {
       mongoose.connect(TEST_DATABASE_URL, err => err ? rej(err) : res())
     })
-      .then(() => console.log('MongoDB connected'))
-      .then(dropDatabase)
+    .then(() => console.log('MongoDB connected'))
+    .then(dropDatabase)
   })
   beforeEach(seedDatabase)
   afterEach(dropDatabase)
@@ -30,13 +31,13 @@ describe('Student Tracker', () => {
   describe('/users endpoint', () => {
     it('lists all users', () => {
       return chai.request(app)
-        .get('/api/users')
-        .then(res => {
-          expect(res).to.have.status(200)
-          expect(res).to.be.json
-          expect(res.body).to.be.an('array')
-          expect(res.body[0]).to.be.an('object')
-        })
+      .get('/api/users')
+      .then(res => {
+        expect(res).to.have.status(200)
+        expect(res).to.be.json
+        expect(res.body).to.be.an('array')
+        expect(res.body[0]).to.be.an('object')
+      })
     })
 
     it('creates a new user', () => {
@@ -48,20 +49,20 @@ describe('Student Tracker', () => {
       }
 
       return chai.request(app)
-        .post('/api/users')
-        .send(user)
-        .then((res) => {
-          expect(res).to.have.status(201)
-          expect(res).to.be.json
-          expect(res.body).to.be.an('object')
+      .post('/api/users')
+      .send(user)
+      .then((res) => {
+        expect(res).to.have.status(201)
+        expect(res).to.be.json
+        expect(res.body).to.be.an('object')
 
-          Object.keys(user).forEach((key) => {
-            if (['_id', 'password'].includes(key)) return
+        Object.keys(user).forEach((key) => {
+          if (['_id', 'password'].includes(key)) return
 
-            expect(res.body[key]).to.be.ok
-            expect(res.body[key]).to.equal(user[key])
-          })
+          expect(res.body[key]).to.be.ok
+          expect(res.body[key]).to.equal(user[key])
         })
+      })
     })
   })
 
@@ -70,50 +71,106 @@ describe('Student Tracker', () => {
       let user
 
       return User.findOne()
-        .then((doc) => (user = doc.toObject()))
-        .then(() => chai.request(app).get(`/api/users/${user._id}`))
-        .then((res) => {
-          expect(res).to.have.status(200)
-          expect(res).to.be.json
-          expect(res.body).to.be.an('object')
-          expect(res.body.id).to.equal(user._id.toString())
+      .then((doc) => (user = doc.toObject()))
+      .then(() => chai.request(app).get(`/api/users/${user._id}`))
+      .then((res) => {
+        expect(res).to.have.status(200)
+        expect(res).to.be.json
+        expect(res.body).to.be.an('object')
+        expect(res.body.id).to.equal(user._id.toString())
 
-          Object.keys(user).forEach((key) => {
-            if (['_id', 'password', '__v'].includes(key)) return
+        Object.keys(user).forEach((key) => {
+          if (['_id', 'password', '__v'].includes(key)) return
 
-            expect(res.body[key]).to.not.be.undefined
-            expect(user[key]).to.equal(res.body[key])
-          })
+          expect(res.body[key]).to.not.be.undefined
+          expect(user[key]).to.equal(res.body[key])
         })
+      })
     })
-    it('updates a user')
-    it('deletes a user')
+
+    xit('updates a user', () => {
+      let user, newUser = {}
+
+      return User.findOne()
+      .then((doc) => {
+        user = doc
+        const userObj = doc.toObject()
+
+        Object.keys(userObj).forEach(key => {
+          newUser[key] = userObj[key]
+        })
+
+        newUser.firstName = 'Paul John'
+        newUser.lastName = 'Doe'
+      })
+      .then(() => {
+        // TODO: it needs to have the PUT /api/users/:id handler already implemented
+        return chai.request(app)
+          .put(`/api/users/${user._id}`)
+          .send(newUser)
+      })
+      .then((res) => {
+        expect(res).to.have.status(200)
+        expect(res).to.be.json
+        expect(res.body).to.be.an('object')
+
+        ;['firstName', 'lastName'].forEach(key => expect(res.body[key]).to.equal(newUser[key]))
+      })
+    })
+
+    xit('deletes a user', () => {
+      // TODO: mock the passport JWT strategy to allow DELETE /api/users/:id
+      let user
+
+      return User.findOne()
+      .then((doc) => (user = doc.toObject()))
+      .then(() => chai.request(app).delete(`/api/users/${user._id}`))
+      .then((res) => {
+        expect(res).to.have.status(204)
+      })
+      .then(() => {
+        expect(User.findById(user._id)).to.be.rejected
+      })
+    })
   })
+
+  // all `/auth`, `/students` and `/logs` endpoints uses Passport-based
+  // authentication middlewares, and in order to test it, mocking becomes
+  // necessary. Since it's not covered by the Node.js curric we'll going to skip
+  // their implementations.
 
   describe('/auth endpoint', () => {
-    it('signs in a user')
-    it('signs out a user')
+    xit('signs in a user')
+
+    xit('signs out a user')
   })
 
+  // TODO: passport mocking
   describe('/students endpoint', () => {
-    it('lists all students')
-    it('creates a new student')
+    xit('lists all students')
+
+    xit('creates a new student')
   })
 
   describe('/students/:id', () => {
-    it('shows a student entry')
-    it('updates a student entry')
-    it('deletes a student entry')
+    xit('shows a student entry')
+
+    xit('updates a student entry')
+
+    xit('deletes a student entry')
   })
 
   describe('/logs endpoint', () => {
-    it('lists all log entries')
-    it('creates a new log entry')
+    xit('lists all log entries')
+
+    xit('creates a new log entry')
   })
 
   describe('/logs/:id', () => {
-    it('shows a log entry')
-    it('updates a log entry')
-    it('deletes a log entry')
+    xit('shows a log entry')
+
+    xit('updates a log entry')
+
+    xit('deletes a log entry')
   })
 })
