@@ -134,167 +134,43 @@ describe('Student Tracker', () => {
     })
   })
 
+  // all `/auth`, `/students` and `/logs` endpoints uses Passport-based
+  // authentication middlewares, and in order to test it, mocking becomes
+  // necessary. Since it's not covered by the Node.js curric we'll going to skip
+  // their implementations.
+
   describe('/auth endpoint', () => {
-    xit('signs in a user', () => {
-      let user
+    xit('signs in a user')
 
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${user._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
-
-    xit('signs out a user', () => {
-      let user
-
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${user._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('signs out a user')
   })
 
   // TODO: passport mocking
   describe('/students endpoint', () => {
-    xit('lists all students', () => {
-      return User.findOne()
-      .then((doc) => chai.request(app).get(`/api/students/${doc._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('lists all students')
 
-    xit('creates a new student', () => {
-      let user
-
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${students._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('creates a new student')
   })
 
   describe('/students/:id', () => {
-    xit('shows a student entry', () => {
-      let user
+    xit('shows a student entry')
 
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${Student._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('updates a student entry')
 
-    xit('updates a student entry', () => {
-      let user
-
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${Student._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
-
-    xit('deletes a student entry', () => {
-      let user
-
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${Student._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('deletes a student entry')
   })
 
   describe('/logs endpoint', () => {
-    xit('lists all log entries', () => {
-      let user
+    xit('lists all log entries')
 
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${logs._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
-
-    xit('creates a new log entry', () => {
-      let user
-
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${log._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('creates a new log entry')
   })
 
   describe('/logs/:id', () => {
-    xit('shows a log entry', () => {
-      let user
+    xit('shows a log entry')
 
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${log._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('updates a log entry')
 
-    xit('updates a log entry', () => {
-      let user
-
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${log._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
-
-    xit('deletes a log entry', () => {
-      let user
-
-      return User.findOne()
-      .then((doc) => (user = doc.toObject()))
-      .then(() => chai.request(app).get(`/api/users/${log._id}`))
-      .then((res) => {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.an('object')
-      })
-    })
+    xit('deletes a log entry')
   })
 })
