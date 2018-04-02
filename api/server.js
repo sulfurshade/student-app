@@ -20,7 +20,7 @@ console.log(DATABASE_URL)
 
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, '../spa')));
+app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
